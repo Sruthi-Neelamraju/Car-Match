@@ -23,15 +23,24 @@ export default function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const response = await fetch('/api/recommend', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(answers)
-    });
-    const data = await response.json();
-    setRecommendations(data.ranked);
-    setSummary(data.summary);
-    setBestPick(data.bestPick);
+    const apiUrl = process.env.NODE_ENV === 'production' 
+      ? '/api/recommend' 
+      : 'http://localhost:3001/api/recommend';
+    
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(answers)
+      });
+      const data = await response.json();
+      setRecommendations(data.ranked);
+      setSummary(data.summary);
+      setBestPick(data.bestPick);
+    } catch (error) {
+      console.error('Error fetching recommendations:', error);
+      setSummary('Error fetching recommendations. Please try again.');
+    }
     setLoading(false);
   };
 
