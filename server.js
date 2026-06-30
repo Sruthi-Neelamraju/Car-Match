@@ -254,10 +254,12 @@ app.post('/api/recommend', (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'dist')));
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Car Match API listening on port ${port}`);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Car Match API listening on port ${PORT}`);
 });
