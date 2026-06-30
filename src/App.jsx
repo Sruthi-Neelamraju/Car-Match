@@ -23,12 +23,9 @@ export default function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    const apiUrl = process.env.NODE_ENV === 'production' 
-      ? '/api/recommend' 
-      : 'http://localhost:3001/api/recommend';
     
     try {
-      const response = await fetch(apiUrl, {
+      const response = await fetch('/api/recommend', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(answers)

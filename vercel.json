@@ -2,20 +2,14 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "functions": {
-    "server.js": {
-      "memory": 1024,
-      "maxDuration": 60
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "server.js"
+      "destination": "/api/$1.js"
     },
     {
       "source": "/(.*)",
-      "destination": "index.html"
+      "destination": "/index.html"
     }
   ]
 }
