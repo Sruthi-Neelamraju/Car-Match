@@ -33,9 +33,7 @@ Car Match is a compact full-stack MVP that helps a confused car buyer move from 
 - Add charts for price, safety, and mileage trade-offs
 - Improve accessibility and mobile polish
 
-## Run locally
-```bash
-npm install
-npm run dev
-```
-Then open http://localhost:3000
+
+Then open Live URL
+Deployed on vercel
+car-match-sage.vercel.app 
